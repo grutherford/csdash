@@ -5,7 +5,7 @@ search_term = URI::encode('electronic components')
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new('search.twitter.com')
-  response = http.request(Net::HTTP::Get.new("/search.json?q={search_term}"))
+  response = http.request(Net::HTTP::Get.new("/search.json?q=#{search_term}"))
   tweets = JSON.parse(response.body)["results"]
   if tweets
     tweets.map! do |tweet| 
