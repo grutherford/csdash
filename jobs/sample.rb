@@ -15,11 +15,13 @@ SCHEDULER.every '2s' do
   	current_orders = 0
   else
   	current_orders = last_orders+1
-  
-  if current_quotes = 100
+  end
+
+  if last_quotes = 100
   	current_quotes = 0
   else 
 	current_quotes = last_quotes+5
+  end
   
   send_event('valuation', { current: current_valuation, last: last_valuation })
   send_event('karma', { current: current_karma, last: last_karma })
